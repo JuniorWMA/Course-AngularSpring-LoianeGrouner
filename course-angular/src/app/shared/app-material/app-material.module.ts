@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatTableModule} from '@angular/material/table';
-
+import { NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -10,7 +10,8 @@ import {MatTableModule} from '@angular/material/table';
   exports: [
     CommonModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ]
 })
 export class AppMaterialModule { }

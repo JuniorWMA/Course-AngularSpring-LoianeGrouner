@@ -1,0 +1,12 @@
+[{
+  "name": "course-angular",
+  "category":"Front-end"
+},
+{
+  "name": "Spring Boot",
+  "category":"Back-end"
+},
+{
+  "name": "Java",
+  "category":"Back-end"
+}]

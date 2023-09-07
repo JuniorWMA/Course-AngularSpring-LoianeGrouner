@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Course } from '../../model/course';
+import { CourseService } from '../../service/course.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-course',
@@ -8,20 +10,26 @@ import { Course } from '../../model/course';
 })
 export class ListCourseComponent implements OnInit {
 
-  courses:Course[] = [{
-    name: "Angular",
-    category: "Front-end",
-  }];
+  courses:Course[] = [];
 
   displayedColumns = ['num','name', 'category']
 
-  constructor() {
+  constructor(private service : CourseService) {
 
   }
 
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.listCourses();
+  }
+
+  listCourses(){
+    this.service.listCourses().subscribe({
+      next: (obj) => { this.courses = obj; },
+      error: (err) => console.log(err),
+      complete: () => console.log("complete")
+    })
+
   }
 
 }
