@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Course } from '../../model/course';
 import { CourseService } from '../../service/course.service';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class ListCourseComponent implements OnInit {
 
-  courses:Course[] = [];
+  @Input()courses:Course[] = [];
 
   displayedColumns = ['num','name', 'category']
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Course } from '../../model/course';
 
 @Component({
@@ -8,6 +8,6 @@ import { Course } from '../../model/course';
 })
 export class CourseComponent {
 
-  
+  courses:Course[] = [];
 
 }
