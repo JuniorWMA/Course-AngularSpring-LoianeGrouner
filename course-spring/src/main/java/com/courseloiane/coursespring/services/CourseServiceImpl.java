@@ -3,10 +3,12 @@ package com.courseloiane.coursespring.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.courseloiane.coursespring.dtos.CourseDto;
+import com.courseloiane.coursespring.models.Course;
 import com.courseloiane.coursespring.repositories.CourseRepository;
 
 @Service
@@ -20,14 +22,14 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public ResponseEntity<List<CourseDto>> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        List<Course> list = repository.findAll();
+        List<CourseDto> listDto = list.stream().map(obj -> new CourseDto(obj)).toList();
+        return new ResponseEntity<List<CourseDto>>(listDto, HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<CourseDto> findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        
     }
 
     @Override

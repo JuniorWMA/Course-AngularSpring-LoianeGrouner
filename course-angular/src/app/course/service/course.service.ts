@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CourseService {
 
-  private readonly API = 'assets/test.json';
+  private readonly API = 'api/courses';
 
   constructor(private http : HttpClient) { }
 
