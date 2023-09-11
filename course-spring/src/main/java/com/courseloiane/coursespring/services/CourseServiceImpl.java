@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.courseloiane.coursespring.dtos.CourseDto;
+import com.courseloiane.coursespring.exceptions.CourseException;
 import com.courseloiane.coursespring.models.Course;
 import com.courseloiane.coursespring.repositories.CourseRepository;
 
@@ -29,25 +30,33 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public ResponseEntity<CourseDto> findById(Long id) {
-        
+        var course = repository.findById(id).orElseThrow(() -> new CourseException("Course Not Found"));
+        return new ResponseEntity<CourseDto>(new CourseDto(course), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<CourseDto> save(CourseDto dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        Course course = new Course(dto);
+        repository.save(course);
+        return new ResponseEntity<CourseDto>(new CourseDto(course), HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<CourseDto> update(Long id, CourseDto dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        Course course = repository.findById(id).orElseThrow(() -> new CourseException("Course Not Found"));
+        course = repository.findById(id).get();
+        course.setName(dto.name());
+        course.setCategory(dto.category());
+        repository.save(course);
+        return new ResponseEntity<CourseDto>(new CourseDto(course), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        Course course = repository.findById(id).orElseThrow(() -> new CourseException("Course Not Found"));
+        course = repository.findById(id).get();
+        repository.delete(course);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
     
 }

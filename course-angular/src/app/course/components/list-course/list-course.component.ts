@@ -12,7 +12,7 @@ export class ListCourseComponent implements OnInit {
 
   @Input()courses:Course[] = [];
 
-  displayedColumns = ['num','name', 'category']
+  displayedColumns = ['num','name', 'category', 'actions'];
 
   constructor(private service : CourseService) {
 

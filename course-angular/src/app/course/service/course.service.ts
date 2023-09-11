@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CourseService {
 
-  private readonly API = 'api/courses';
+  private readonly API = 'http://localhost:8080';
 
   constructor(private http : HttpClient) { }
 
 
   listCourses():Observable<Course[]>{
-    return this.http.get<Course[]>(this.API).pipe(
+    return this.http.get<Course[]>(this.API+"/courses").pipe(
       first(),
       tap(courses => console.log(courses))
     )
