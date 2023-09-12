@@ -23,7 +23,7 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>
 
-            <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
+            <button (click)="onAdd()" mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
               <mat-icon>add</mat-icon>
             </button>
 
@@ -38,7 +38,7 @@
             <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
               <mat-icon>delete</mat-icon>
             </button>
-          
+
         </td>
 
       </ng-container>

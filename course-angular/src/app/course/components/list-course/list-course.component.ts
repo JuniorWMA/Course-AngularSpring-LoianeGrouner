@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { Course } from '../../model/course';
 import { CourseService } from '../../service/course.service';
 import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-course',
@@ -14,7 +15,7 @@ export class ListCourseComponent implements OnInit {
 
   displayedColumns = ['num','name', 'category', 'actions'];
 
-  constructor(private service : CourseService) {
+  constructor(private service : CourseService, private router : Router, private route : ActivatedRoute) {
 
   }
 
@@ -30,6 +31,10 @@ export class ListCourseComponent implements OnInit {
       complete: () => console.log("complete")
     })
 
+  }
+
+  onAdd(){
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
 }
