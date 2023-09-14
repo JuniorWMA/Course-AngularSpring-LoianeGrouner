@@ -21,6 +21,13 @@ export class CourseService {
 
   }
 
+  saveCourse(course: Course):Observable<Course>{
+    return this.http.post<Course>(this.API+"/courses", course).pipe(
+      first(),
+      tap(savedCourse => console.log(savedCourse))
+    )
+  }
+
 
 
 }
